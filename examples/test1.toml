@@ -1,0 +1,43 @@
+title="First test project"
+author="Lucas Caro"
+
+[[pages]]
+page_no=1
+title="The beginning"
+text="""
+Et eu ut amet ea velit sunt dolore voluptate proident commodo quis laborum magna
+consectetur. Est voluptate esse officia consectetur magna labore labore ex ex 
+excepteur esse irure adipisicing laboris. Aliquip ex voluptate ut in aute amet 
+ad Lorem.
+"""
+choices=[
+    {text="choice 1", page=2},
+    {text="choice 2", page=3},
+]
+
+[[pages]]
+page_no=2
+title="Moving forward"
+text="""
+Excepteur id aliqua dolor laboris irure sit velit labore minim eu occaecat 
+aliquip esse. Quis incididunt velit dolore sunt ipsum quis occaecat et laborum 
+laborum consequat quis culpa est. Commodo irure laboris veniam aute tempor 
+exercitation nostrud aliquip nostrud labore consectetur minim esse non. 
+Exercitation non laboris ipsum nostrud.
+"""
+choices=[
+    {text="choice 1", page=1},
+    {text="choice 2", page=3},
+]
+
+[[pages]]
+page_no=3
+title="The end"
+text="""
+Labore deserunt proident cupidatat id eiusmod reprehenderit officia pariatur 
+dolor cupidatat minim adipisicing. Aliqua magna enim laborum consectetur 
+dolore. Mollit pariatur magna fugiat nisi sunt. Non eiusmod laborum est 
+reprehenderit. Sint sint pariatur aliquip ullamco ad veniam fugiat cupidatat 
+est. Incididunt amet nisi sit qui nulla ullamco veniam et sint id. Enim labore 
+ex aute ut Lorem sit in cupidatat ipsum cillum.
+"""

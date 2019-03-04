@@ -1,0 +1,12 @@
+[package]
+name = "choose_your_own"
+version = "0.1.0"
+authors = ["Lucas Caro <lucascaro@gmail.com>"]
+
+[dependencies]
+toml = "0.4.6"
+text_io = "0.1.7"         # really simple to use panicking input functions
+term_size = "0.3"
+serde_derive = "1.0.39"
+serde = "1.0.38"
+colored = "1.6.0"
