@@ -3,11 +3,11 @@ extern crate serde_derive;
 extern crate colored;
 extern crate toml;
 
-use std::io;
 use colored::*;
+use std::io;
 
-mod config;
 mod book;
+mod config;
 #[macro_use]
 mod print;
 use print::*;
@@ -41,7 +41,8 @@ fn choose(page_no: usize, page: &book::Page) -> usize {
                 c + 1,
                 choices[c].text,
                 choices[c].page
-            ).cyan());
+            )
+            .cyan());
         }
         p!("x) quit".cyan());
         p!("Your choice:".cyan().bold());
