@@ -28,34 +28,19 @@ fn main() {
 }
 
 fn choose(page_no: usize, page: &book::Page) -> usize {
-    separator();
-    p!(format!("Current page: {}", page_no + 1).white().dimmed());
-    separator();
+    p!(page_title(page_no + 1));
     println!("{}", page.text);
-    if page.choices.is_some() {
-        let choices = page.choices.as_ref().unwrap();
-        let num_choices = choices.len();
-        for c in 0..num_choices {
-            p!(format!(
-                "{}) {} (go to page {})",
-                c + 1,
-                choices[c].text,
-                choices[c].page
-            )
-            .cyan());
+    match page.choices {
+        Some(ref choices) => {
+            p!(page.choices_str());
+            p!(page_footer());
+            get_choice(&choices).unwrap_or(page_no)
         }
-        p!("x) quit".cyan());
-        p!("Your choice:".cyan().bold());
-
-        return match get_choice(&choices) {
-            None => page_no,
-            Some(p) => p,
-        };
+        None => page_no,
     }
-    return page_no;
 }
 
-fn get_choice(choices: &Vec<book::Choice>) -> Option<usize> {
+fn get_choice(choices: &[book::Choice]) -> Option<usize> {
     let mut choice = String::new();
     io::stdin()
         .read_line(&mut choice)
@@ -73,5 +58,5 @@ fn get_choice(choices: &Vec<book::Choice>) -> Option<usize> {
         let dst_page = choices[choice - 1].page;
         return Some(dst_page - 1);
     }
-    return None;
+    None
 }

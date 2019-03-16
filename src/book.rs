@@ -1,3 +1,6 @@
+use colored::*;
+use std::fmt;
+
 // Book
 #[derive(Debug, Clone, Deserialize)]
 pub struct Book {
@@ -6,15 +9,7 @@ pub struct Book {
     pub pages: Vec<Page>,
 }
 
-impl Book {
-    // pub fn new(title: &str, author: &str, pages: Vec<Page>) -> Book {
-    //     return Book {
-    //         title: String::from(title),
-    //         author: String::from(author),
-    //         pages: pages,
-    //     };
-    // }
-}
+impl Book {}
 
 // Page
 #[derive(Debug, Clone, Deserialize)]
@@ -25,13 +20,21 @@ pub struct Page {
 }
 
 impl Page {
-    // pub fn new(page_no: usize, text: &str, choices: Option<Vec<Choice>>) -> Page {
-    //     return Page {
-    //         page_no: page_no,
-    //         text: String::from(text),
-    //         choices: choices,
-    //     };
-    // }
+    pub fn choices_str(&self) -> String {
+        match self.choices {
+            Some(ref choices) => choices
+                .iter()
+                .enumerate()
+                .map(Page::choice_str)
+                .collect::<Vec<String>>()
+                .join("\n"),
+            None => String::from(""),
+        }
+    }
+
+    fn choice_str((c, choice): (usize, &Choice)) -> String {
+        format!("{}) {}", c + 1, choice).cyan().to_string()
+    }
 }
 
 // Choice
@@ -41,11 +44,10 @@ pub struct Choice {
     pub page: usize,
 }
 
-impl Choice {
-    // pub fn new(page: usize, text: &str) -> Choice {
-    //     return Choice {
-    //         page: page,
-    //         text: String::from(text),
-    //     };
-    // }
+impl Choice {}
+
+impl fmt::Display for Choice {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} (go to page {})", self.text, self.page)
+    }
 }

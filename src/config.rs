@@ -27,7 +27,7 @@ pub fn load(fname: &str) -> Result<Book, String> {
         Ok(_) => println!("{} loaded", display),
     }
 
-    return toml::from_str(&s).map_err(stringify);
+    toml::from_str(&s).map_err(stringify)
     // `file` goes out of scope, and the "hello.txt" file gets closed
 }
 
